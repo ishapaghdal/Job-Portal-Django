@@ -1,0 +1,20 @@
+{% extends 'portal/base.html' %}
+
+{% block content %}
+<div class="login-container">
+    <div class="left-side">
+        <img src="../../static/photo/Untitled design (2).png" alt="Signup Image" class="login-image">
+    </div>
+    <div class="right-side">
+        <h1>Sign Up</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="login-btn">Sign Up</button>
+        </form>
+        <a href="{% url 'login' %}" class="signup-link">Already have an account? Login</a>
+    </div>
+</div>
+{% endblock %}

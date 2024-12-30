@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/login.css">
+    <link rel="stylesheet" href="../../static/css/register.css">
+    <link rel="stylesheet" href="../../static/css/job.css">
+    <link rel="stylesheet" href="../../static/css/job_list.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <title>Job Portal</title>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg pl-5 pr-5 " >
+            <a class="navbar-brand" href="{% url 'job_list' %}">Jobify</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                
+              </ul>
+        {% if user.is_authenticated %}
+
+              <form class="form-inline my-2 my-lg-0">
+                <a href="{% url 'create_job_post' %}"class="btn btn-primary my-2 my-sm-0" >Add Job</button>
+                  <a href="{% url 'edit_company' %}"class="btn btn-primary my-2 my-sm-0 ml-2" > Edit Compnay</button>
+                <a href="{% url 'logout' %}" class="btn btn-outline-error my-2 my-sm-0">Logout</a>
+              </form>
+              {% else %}
+                <form class="form-inline my-2 my-lg-0">
+                    <a href="{% url 'login' %}" class="btn btn-primary my-2 my-sm-0">Login</a>
+                </form>
+                {% endif %}
+            </div>
+          </nav>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

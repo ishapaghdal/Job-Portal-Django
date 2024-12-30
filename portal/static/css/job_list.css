@@ -1,0 +1,89 @@
+.job-list-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.job-list-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.job-list-create-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.job-list-create-btn:hover {
+    background-color: #0056b3;
+}
+
+.job-list-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.job-list-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    background-color: #fff;
+}
+
+.job-list-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.job-list-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.job-list-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-list-edit-btn {
+    padding: 10px 20px;
+    background-color: #ffc107;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.job-list-edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.job-list-delete-btn {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.job-list-delete-btn:hover {
+    background-color: #c82333;
+}

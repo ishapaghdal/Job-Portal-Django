@@ -1,0 +1,57 @@
+{% extends 'portal/base.html' %}
+<!-- {% include 'portal/navbar.html' %} -->
+{% block content %}
+<div class="job-list-container">
+    <h1>Job List</h1>
+    <div class="job-list-cards">
+        {% for job in page_obj %}
+        <div class="job-list-card">
+            <h3 class="job-list-title">{{ job.title }}</h3>
+            <p class="job-list-description">{{ job.description }}</p>
+            {% if job.company == request.user.company %}
+            <div class="job-list-actions">
+                <a href="{% url 'edit_job_post' job.id %}" class="job-list-edit-btn">Edit</a>
+                <form action="{% url 'delete_job_post' job.id %}" method="post" class="job-list-delete-form">
+                    {% csrf_token %}
+                    <button type="submit" class="job-list-delete-btn">Delete</button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination justify-content-center mt-5">
+        <ul class="pagination">
+            <br>
+            {% if page_obj.has_previous %}
+                
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+            {% else %}
+               
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1">Previous</a>
+                </li>
+            {% endif %}
+    
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</a>
+            </li>
+    
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+               
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1">Next</a>
+                </li>
+               
+            {% endif %}
+        </ul>
+    </div>
+    
+</div>
+{% endblock %}
