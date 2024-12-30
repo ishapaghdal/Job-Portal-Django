@@ -41,11 +41,12 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'portal/login.html', {'form': form})
 
-# Logout View
+# Logout
 def logout_view(request):
     logout(request)
     return redirect('login')
 
+#login
 @login_required
 def register_company(request):
     if request.method == 'POST':
@@ -59,6 +60,7 @@ def register_company(request):
         form = CompanyForm()
     return render(request, 'portal/register_company.html', {'form': form})
 
+#create job
 @login_required
 def create_job_post(request):
     if request.method == 'POST':
@@ -72,6 +74,7 @@ def create_job_post(request):
         form = JobPostForm()
     return render(request, 'portal/create_job_post.html', {'form': form})
 
+#list job
 @login_required
 def job_list(request):
     jobs = JobPost.objects.filter()
@@ -79,21 +82,9 @@ def job_list(request):
 
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
-    # return render(request, "list.html", {"page_obj": page_obj})
     return render(request, 'portal/job_list.html', {'page_obj': page_obj})
 
-# @login_required
-# def edit_job_post(request, pk):
-#     job = JobPost.objects.get(pk=pk, company=request.user.company)
-#     if request.method == 'POST':
-#         form = JobPostForm(request.POST, instance=job)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('job_list')
-#     else:
-#         form = JobPostForm(instance=job)
-#     return render(request, 'portal/edit_job_post.html', {'form': form})
-
+#edit job
 @login_required
 def edit_job_post(request, pk):
     job = get_object_or_404(JobPost, pk=pk, company=request.user.company)
@@ -108,6 +99,7 @@ def edit_job_post(request, pk):
 
     return render(request, 'portal/edit_job_post.html', {'form': form})
 
+#edit company
 @login_required
 def edit_company(request):
     company = request.user.company
@@ -122,6 +114,7 @@ def edit_company(request):
 
     return render(request, 'portal/edit_company.html', {'form': form})
 
+#delete job
 @login_required
 def delete_job_post(request, pk):
     job = JobPost.objects.get(pk=pk, company=request.user.company)
