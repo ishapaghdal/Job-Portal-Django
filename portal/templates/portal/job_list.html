@@ -8,6 +8,9 @@
         <div class="job-list-card">
             <h3 class="job-list-title">{{ job.title }}</h3>
             <p class="job-list-description">{{ job.description }}</p>
+            <p class="job-list-description">{{ job.location }}</p>
+            <p class="job-list-description">{{ job.salary_range }}</p>
+            <p class="job-list-description">{{ job.tags }}</p>
             {% if job.company == request.user.company %}
             <div class="job-list-actions">
                 <a href="{% url 'edit_job_post' job.id %}" class="job-list-edit-btn">Edit</a>
