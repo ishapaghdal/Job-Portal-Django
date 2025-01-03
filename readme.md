@@ -26,6 +26,8 @@ Follow these steps to set up the project on your local machine:
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/ishapaghdal/Job-Portal-Django.git
+   ```
+   ```bash
    cd Job-Portal-Django
 
 2. **Install Dependencies**:
@@ -34,6 +36,8 @@ Follow these steps to set up the project on your local machine:
 3. **Run Migrations:**
     ```bash
     python manage.py makemigrations
+    ```
+    ```bash
     python manage.py migrate
 
 4. **Run the Server:**
