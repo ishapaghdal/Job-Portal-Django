@@ -1,11 +1,9 @@
-{% extends 'portal/base.html' %}
-
-{% block content %}
+{% extends 'portal/base.html' %} {% block content %}
 <h2>Delete Job Post</h2>
 <p>Are you sure you want to delete the job post titled "{{ job.title }}"?</p>
 <form method="POST">
-    {% csrf_token %}
-    <button type="submit">Delete</button>
-    <a href="{% url 'job_list' %}">Cancel</a>
+  {% csrf_token %}
+  <button type="submit">Delete</button>
+  <a href="{% url 'job_list' %}">Cancel</a>
 </form>
 {% endblock %}

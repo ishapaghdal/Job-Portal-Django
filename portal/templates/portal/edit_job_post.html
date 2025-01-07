@@ -1,124 +1,16 @@
-<style>
-  .c {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    margin: 50px 50px;
-  }
+{% extends 'portal/base.html' %} {% block content %}
 
-  .add-job-form-content {
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .add-job-form-content h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .add-job-input-group input,
-  .add-job-input-group select,
-  .add-job-input-group textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-sizing: border-box;
-  }
-
-  .add-job-input-group input:focus,
-  .add-job-input-group select:focus,
-  .add-job-input-group textarea:focus {
-    border-color: #000;
-    outline: none;
-  }
-
-  .add-job-submit-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .add-job-submit-button:hover {
-    background-color: #0056b3;
-  }
-</style>
-<html lang="en">
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-  </head>
-
-  <body data-bs-theme="dark">
-    <div>
-      <nav class="navbar navbar-expand-lg pl-5 pr-5">
-        <a class="navbar-brand primary" href="{% url 'job_list' %}">Jobify</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto"></ul>
-          {% if user.is_authenticated %}
-
-          <form class="form-inline my-2 my-lg-0">
-            <a
-              href="{% url 'create_job_post' %}"
-              class="btn btn-primary my-2 my-sm-0"
-              >Add Job</a
-            >
-            <a
-              href="{% url 'logout' %}"
-              class="btn btn-outline-error my-2 my-sm-0"
-              >Logout</a
-            >
-          </form>
-          {% else %}
-          <form class="form-inline my-2 my-lg-0">
-            <a href="{% url 'login' %}" class="btn btn-success my-2 my-sm-0"
-              >Login</a
-            >
-          </form>
-          {% endif %}
-        </div>
-      </nav>
-      {% block content %} {% endblock %}
+<div class="c">
+  <div class="add-job-form-container">
+    <div class="add-job-form-content">
+      <h2>Update Job Post</h2>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="add-job-input-group">{{ form.as_p }}</div>
+        <button type="submit" class="add-job-submit-button">Update Job</button>
+      </form>
     </div>
+  </div>
+</div>
 
-    <div class="c">
-      <div class="add-job-form-container">
-        <div class="add-job-form-content">
-          <h2>Update Job Post</h2>
-          <form method="POST">
-            {% csrf_token %}
-            <div class="add-job-input-group">{{ form.as_p }}</div>
-            <button type="submit" class="add-job-submit-button">
-              Update Job
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+{% endblock %}

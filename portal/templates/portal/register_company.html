@@ -1,16 +1,12 @@
-{% extends 'portal/base.html' %}
-
-{% block content %}
+{% extends 'portal/base.html' %} {% block content %}
 <div class="register-form-container">
-    <div class="register-form-content">
-        <h2>Register Your Company</h2>
-        <form method="post">
-            {% csrf_token %}
-            <div class="register-input-group">
-                {{ form.as_p }}
-            </div>
-            <button type="submit" class="register-submit-button">Register</button>
-        </form>
-    </div>
+  <div class="register-form-content">
+    <h2>Register Your Company</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="register-input-group">{{ form.as_p }}</div>
+      <button type="submit" class="register-submit-button">Register</button>
+    </form>
+  </div>
 </div>
 {% endblock %}
